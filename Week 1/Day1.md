@@ -86,21 +86,31 @@ Logic synthesis converts RTL code into a gate-level netlist using standard cell 
 Steps include reading design, applying synthesis, mapping to technology cells, and writing the final netlist.
 
 ### Commands
-```bash
+
 yosys
 # 1. Read your RTL design
 read_verilog good_mux.v
+![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/a226655ba337c8c79a6b6de01167d16544d4e121/Week%201/Week%201%20pictures/1yo.png )
+
 # 2. Read the Sky130 standard cell library
 read_liberty -lib /home/ingenious_engineer/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/a226655ba337c8c79a6b6de01167d16544d4e121/Week%201/Week%201%20pictures/2yo.png)
+
 # 3. Perform synthesis with top module
 synth -top good_mux
+![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/a226655ba337c8c79a6b6de01167d16544d4e121/Week%201/Week%201%20pictures/3yo.png)
+
 # 4. Run technology mapping
 abc -liberty /home/ingenious_engineer/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/a226655ba337c8c79a6b6de01167d16544d4e121/Week%201/Week%201%20pictures/4yo.png)
+
 # 5. View the synthesized logic graph
 show
+![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/a226655ba337c8c79a6b6de01167d16544d4e121/Week%201/Week%201%20pictures/netlist%206.png)
+
 # 6. Write the gate-level netlist
 write_verilog good_mux_netlist.v
-```
+![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/a226655ba337c8c79a6b6de01167d16544d4e121/Week%201/Week%201%20pictures/write%20netlist%207.png)
 
 ### ✅ Notes:
 -lib in read_liberty tells yosys it’s a library.
