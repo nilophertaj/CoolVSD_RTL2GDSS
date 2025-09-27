@@ -79,6 +79,7 @@ iverilog good_mux.v tb_good_mux.v   # Compile design + testbench
 gtkwave tb.vcd                      # View waveforms
 ```
 
+![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/b05e30f9b47a24778fbca50e3e5a9a5d190e124b/Week%201/Week%201%20pictures/iverilog%20%26GTK%20wave%201.png)
 ## 🔹 Yosys & Logic Synthesis
 Yosys is an open-source tool for logic synthesis.
 Logic synthesis converts RTL code into a gate-level netlist using standard cell libraries (e.g., Sky130).
