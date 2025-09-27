@@ -33,7 +33,7 @@ This document records my **Day -2 progress** in learning:
       else
           q <= d;
   end
-```
+
 - **Asynchronous reset**
 ```verilog
 always @(posedge clk or posedge rst) begin
@@ -56,33 +56,48 @@ end
 
 🔹 Yosys Synthesis Flow
 Step 1: Read RTL Design
-
+## invoke yosys 
+```bash
 yosys
+```
 #inside yosys shell
+```bash
 read_verilog multiple_modules.v
 read_liberty -lib /home/ingenious_engineer/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
-
+```
 ![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/8ab5b1782e1144335893b4812eddfe0e9f7b20a7/Week%201/Week%201%20pictures/multiple_modules.jpg)
 
 Step 2: Hierarchical Synthesis
 Keeps the design hierarchy (separate modules remain visible).
+```bash
 synth -top top_module
 write_verilog multiple_modules_hier_netlist.v
+```
 ![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/8ab5b1782e1144335893b4812eddfe0e9f7b20a7/Week%201/Week%201%20pictures/hier.jpg)
 
 Step 3: Flat Synthesis
 Flattens all modules into a single-level netlist.
+```bash
 flatten
 synth -top top_module
 write_verilog multiple_modules_flat_netlist.v
+```
 ## Module_Flat
 ![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/8ab5b1782e1144335893b4812eddfe0e9f7b20a7/Week%201/Week%201%20pictures/flat%20module.jpg)
 ## Module_Flat_Netlist
 ![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/8ab5b1782e1144335893b4812eddfe0e9f7b20a7/Week%201/Week%201%20pictures/flat%20netlist.jpg)
 
 Step 4: Technology Mapping with ABC
+```bash
 abc -liberty /home/ingenious_engineer/sky130RTLDesignAndSynthesisWorkshop/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 show
+```
+In .lib file for modules the gate area will increase according to the gate sizes
+## a2_1 (AND gate)
+![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/da3d023232f323679326cc3a342f49a422c0add6/Week%201/Week%201%20pictures/a2_1.jpg)
+
+## a2_2 (AND gate)
+![image_alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/da3d023232f323679326cc3a342f49a422c0add6/Week%201/Week%201%20pictures/a2_2.jpg)
 
 🔹 Why Submodule-Level (Hierarchical) Synthesis?
 
