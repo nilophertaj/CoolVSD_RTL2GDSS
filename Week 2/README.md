@@ -86,12 +86,12 @@ make pre_synth_sim
 gtkwave output/pre_synth_sim/pre_synth_sim.vcd
 ```
 ## Pre-synthesis waveform
-![image.alt]()
+![image.alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/0a5c96e516af7009544a2a450e4691212b3258fd/Week%202/git/Week2%20snapshots/Pre_synth.png)
 Important Signals:
 
-CLK: PLL output
-OUT: DAC output
-RV_TO_DAC[9:0]: RVMYTH register #17
+- CLK: PLL output
+- OUT: DAC output
+- RV_TO_DAC[9:0]: RVMYTH register #17
 
 Note: Synthesis does not support real variables, so \vsdbabysoc.OUT behaves digitally. Use \dac.OUT to simulate analog values.
 
@@ -115,14 +115,14 @@ make post_synth_sim
 gtkwave output/post_synth_sim/post_synth_sim.vcd
 ```
 ## synthesis waveform
-![image.alt]()
+![image.alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/0a5c96e516af7009544a2a450e4691212b3258fd/Week%202/git/Week2%20snapshots/synth.jpg)
 
 ## post-synthesis waveform
-![image.alt]()
+![image.alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/0a5c96e516af7009544a2a450e4691212b3258fd/Week%202/git/Week2%20snapshots/post_synth.jpg)
 
 Signals:
 
-\core.CLK: RVMYTH clock input
-reset: RVMYTH reset input
-\core.OUT[9:0]: 10-bit output
+- \core.CLK: RVMYTH clock input
+- reset: RVMYTH reset input
+- \core.OUT[9:0]: 10-bit output
 
