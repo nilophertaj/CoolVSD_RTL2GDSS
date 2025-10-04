@@ -8,7 +8,7 @@ VSDBabySoC contains:
 - **8x-PLL** to generate a stable clock  
 - **10-bit DAC** to communicate with other analog devices  
 
-![VSDBabySoC Block Diagram](vsdbabysoc_block_diagram.png)
+![VSDBabySoC Block Diagram](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/413ac24027e2d6556ebab84509267f05fa706d04/Week%202/git/Week2%20snapshots/vsdbabysoc_block_diagram.png)
 
 ---
 
@@ -87,15 +87,17 @@ gtkwave output/pre_synth_sim/pre_synth_sim.vcd
 ```
 ## Pre-synthesis waveform
 ![image.alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/0a5c96e516af7009544a2a450e4691212b3258fd/Week%202/git/Week2%20snapshots/Pre_synth.png)
-Important Signals:
+In this picture we can see the following signals:
 
-- CLK: PLL output
-- OUT: DAC output
-- RV_TO_DAC[9:0]: RVMYTH register #17
+- CLK: This is the input CLK signal of the RVMYTH core. This signal comes from the PLL, originally.
+- reset: This is the input reset signal of the RVMYTH core. This signal comes from an external source, originally.
+- OUT: This is the output OUT signal of the VSDBabySoC module. This signal comes from the DAC (due to simulation restrictions it behaves like a digital signal which is incorrect), originally.
+- RV_TO_DAC[9:0]: This is the 10-bit output [9:0] OUT port of the RVMYTH core. This port comes from the RVMYTH register #17, originally.
+- OUT: This is a real datatype wire which can simulate analog values. It is the output wire real OUT signal of the DAC module. This signal comes from the DAC, originally.
 
 Note: Synthesis does not support real variables, so \vsdbabysoc.OUT behaves digitally. Use \dac.OUT to simulate analog values.
 
-OpenLANE Installation
+## OpenLANE Installation
 
 OpenLANE automates RTL to GDSII flow.
 Installation:
@@ -114,15 +116,17 @@ make synth
 make post_synth_sim
 gtkwave output/post_synth_sim/post_synth_sim.vcd
 ```
-## synthesis waveform
+## synthesis netlist
 ![image.alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/0a5c96e516af7009544a2a450e4691212b3258fd/Week%202/git/Week2%20snapshots/synth.jpg)
 
 ## post-synthesis waveform
 ![image.alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/0a5c96e516af7009544a2a450e4691212b3258fd/Week%202/git/Week2%20snapshots/post_synth.jpg)
+In this picture we can see the following signals:
 
-Signals:
+- \core.CLK: This is the input CLK signal of the RVMYTH core. This signal comes from the PLL, originally.
+- reset: This is the input reset signal of the RVMYTH core. This signal comes from an external source, originally.
+- OUT: This is the output OUT signal of the VSDBabySoC module. This signal comes from the DAC (due to simulation restrictions it behaves like a digital signal which is incorrect), originally.
+- \core.OUT[9:0]: This is the 10-bit output [9:0] OUT port of the RVMYTH core. This port comes from the RVMYTH register #17, originally.
+- OUT: This is a real datatype wire which can simulate analog values. It is the output wire real OUT signal of the DAC module. This signal comes from the DAC, originally.
 
-- \core.CLK: RVMYTH clock input
-- reset: RVMYTH reset input
-- \core.OUT[9:0]: 10-bit output
-
+Note: Synthesis does not support real variables, so \vsdbabysoc.OUT behaves digitally. Use \dac.OUT to simulate analog values.
