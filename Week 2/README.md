@@ -130,3 +130,7 @@ In this picture we can see the following signals:
 - OUT: This is a real datatype wire which can simulate analog values. It is the output wire real OUT signal of the DAC module. This signal comes from the DAC, originally.
 
 Note: Synthesis does not support real variables, so \vsdbabysoc.OUT behaves digitally. Use \dac.OUT to simulate analog values.
+
+## Yosys Final Report
+![image.alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/878954409aee931ee6883bf74456755fe5c6eecc/Week%202/git/Week2%20snapshots/yorep1.png)
+![image.alt](https://github.com/nilophertaj/CoolVSD_RTL2GDSS/blob/878954409aee931ee6883bf74456755fe5c6eecc/Week%202/git/Week2%20snapshots/yorep2.png)
